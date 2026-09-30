@@ -240,22 +240,40 @@ body {
     );
 }
 
-/* Ring and buttons aligned at the bottom with 20px margin */
+/* Ring and buttons at the bottom: the panel is flex-column, so every
+   element between the heading and the ring gets pushed down by making
+   the caption and progress expand. The ring sits right above the
+   buttons with 20px from the panel's bottom edge. */
+.panel.scan-panel .scan-heading {
+  flex: none;
+  width: 100%;
+}
+
 .panel.scan-panel .scan-visual {
   width: clamp(160px, 26vh, 200px);
-  margin: auto auto 0;
+  margin: 0 auto;
 }
 
-.panel.scan-panel .scan-actions {
-  margin: 12px auto 20px;
-}
-
-/* Fill remaining space above the ring */
 .panel.scan-panel .scan-caption {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 0;
+  margin: 0;
+}
+
+.panel.scan-panel .scan-progress {
+  flex: none;
+}
+
+.panel.scan-panel .scan-actions {
+  flex: none;
+  margin: 12px auto 0;
+}
+
+.panel.scan-panel {
+  padding-bottom: 20px;
 }
 
 .scan-ring-inner strong {
