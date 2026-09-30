@@ -258,7 +258,8 @@ body {
 .panel.scan-panel .scan-actions {
   flex: none;
   margin: 20px auto 0;
-  width: auto;
+  width: 100%;
+  max-width: 480px;
 }
 
 .panel.scan-panel {
