@@ -240,36 +240,24 @@ body {
     );
 }
 
-/* Ring and buttons at the bottom: the panel is flex-column, so every
-   element between the heading and the ring gets pushed down by making
-   the caption and progress expand. The ring sits right above the
-   buttons with 20px from the panel's bottom edge. */
-.panel.scan-panel .scan-heading {
-  flex: none;
-  width: 100%;
-}
-
+/* Ring and buttons bottom-aligned: the panel is flex-column with the
+   HTML order heading → visual → caption → progress → actions.
+   margin-top:auto on the ring pushes it (and everything after it)
+   to the bottom of the remaining space. */
 .panel.scan-panel .scan-visual {
   width: clamp(160px, 26vh, 200px);
-  margin: 0 auto;
+  margin-top: auto;
+  margin-bottom: 8px;
 }
 
 .panel.scan-panel .scan-caption {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 0;
-  margin: 0;
-}
-
-.panel.scan-panel .scan-progress {
   flex: none;
+  margin: 0 0 8px;
 }
 
 .panel.scan-panel .scan-actions {
   flex: none;
-  margin: 12px auto 0;
+  margin: 0;
 }
 
 .panel.scan-panel {
