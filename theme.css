@@ -58,9 +58,34 @@ body {
     0 0 12px color-mix(in srgb, var(--cyan) 25%, transparent);
 }
 
-/* Scan ring with afterburn glow */
+/* Scan ring — neon tube from the mockup: magenta ↔ electric cyan */
 .scan-ring {
-  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--cyan) 60%, transparent));
+  background: conic-gradient(
+    from 120deg,
+    #e71c64 0%,
+    #ff4f86 22%,
+    #3ad0ff 52%,
+    #2a67bb 78%,
+    #e71c64 100%
+  );
+  filter:
+    drop-shadow(0 0 8px rgba(58, 208, 255, 0.55))
+    drop-shadow(0 0 16px rgba(231, 28, 100, 0.4));
+}
+
+/* Glass center — the background art shows through */
+.scan-ring::after {
+  background: rgba(8, 8, 24, 0.42);
+  backdrop-filter: blur(8px);
+}
+
+.scan-ring-inner strong {
+  color: #eee6f8;
+  text-shadow: 0 1px 14px rgba(8, 8, 24, 0.6);
+}
+
+.scan-ring-inner span {
+  color: #6f6790;
 }
 
 /* Buttons */
