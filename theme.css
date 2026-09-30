@@ -1,0 +1,83 @@
+/* Tokyo Afterburn — the CSS IS the theme */
+
+:root {
+  --bg: #080818;
+  --panel: rgba(21, 14, 39, 0.88);
+  --panel-2: rgba(33, 24, 52, 0.85);
+  --border: #2a1f4a;
+  --text: #eee6f8;
+  --text-dim: #a89fc4;
+  --text-faint: #6f6790;
+  --cyan: #e71c64;
+  --pink: #2a67bb;
+  --purple: #9e4e86;
+  --green: #4ecfa8;
+  --amber: #e8b849;
+  --red: #ff3b5c;
+  --orange: #e87a3e;
+  --blue: #3a6fd8;
+}
+
+/* Panels with a soft neon edge */
+.panel {
+  border-radius: 6px;
+  border: 1px solid #2a1f4a;
+  box-shadow: 0 0 0 0 transparent, 0 4px 20px rgba(8, 8, 24, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+/* Sidebar glow */
+.sidebar {
+  border-right: 1px solid rgba(231, 28, 100, 0.25);
+}
+
+.sidebar .nav-item.is-active {
+  box-shadow: inset 2px 0 0 var(--cyan), 0 0 12px color-mix(in srgb, var(--cyan) 25%, transparent);
+}
+
+/* Scan ring with afterburn glow */
+.scan-ring {
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--cyan) 60%, transparent));
+}
+
+/* Buttons */
+.button-primary {
+  box-shadow: 0 0 14px color-mix(in srgb, var(--cyan) 35%, transparent);
+}
+
+.button-danger {
+  box-shadow: 0 0 10px color-mix(in srgb, var(--red) 25%, transparent);
+}
+
+/* Monitor bar */
+.monitor-bar .monitor-fill {
+  box-shadow: 0 0 8px color-mix(in srgb, var(--cyan) 30%, transparent);
+}
+
+/* Progress */
+.clean-progress-fill {
+  box-shadow: 0 0 12px color-mix(in srgb, var(--cyan) 45%, transparent);
+}
+
+/* Toast with neon edge */
+.toast {
+  border-color: color-mix(in srgb, var(--cyan) 40%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--cyan) 20%, transparent);
+}
+
+/* Nav hover */
+.nav-item:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--cyan) 8%, transparent);
+}
+
+/* Focus outline */
+button:focus-visible, select:focus-visible {
+  outline: 2px solid var(--cyan);
+}
+
+/* Theme badge */
+.theme-badge {
+  border-color: color-mix(in srgb, var(--cyan) 35%, transparent);
+  color: var(--cyan);
+  background: color-mix(in srgb, var(--cyan) 8%, transparent);
+}

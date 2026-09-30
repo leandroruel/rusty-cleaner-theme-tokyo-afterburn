@@ -6,69 +6,58 @@ gridlines and deep indigo panels.
 ## Structure
 
 ```
-theme.json                        ← the theme manifest (the contract)
+theme.json          ← metadata (id, name, version, asset paths)
+theme.css           ← THE THEME — CSS variables + custom rules
 src/assets/images/background.png  ← main window background
 src/assets/images/sidebar.png     ← sidebar background
-src/assets/images/preview.png     ← preview screenshot for the README
-src/assets/icons/brand.svg        ← sidebar brand icon
-src/assets/fonts/                 ← optional custom fonts (.ttf/.woff2)
+src/assets/icons/brand.png        ← sidebar brand icon (png/jpg/webp only)
+src/assets/fonts/                ← optional custom fonts (.ttf/.woff2)
 ```
+
+## How it works
+
+The `theme.css` is injected verbatim into the app's WebView as a
+`<style>` element. It sets the app's CSS variables and can add any custom
+CSS — border radii, glows, shadows, animations, anything the app's DOM
+supports.
+
+The app's built-in stylesheet uses CSS variables everywhere (no hardcoded
+accent colors), so `:root { --cyan: #e71c64 }` repaints the entire UI.
 
 ## theme.json contract
 
-| Field | Type | Maps to |
-| ----- | ---- | ------- |
-| `colors.background` | CSS color | `--bg` |
-| `colors.panel` | CSS color | `--panel` |
-| `colors.panel2` | CSS color | `--panel-2` |
-| `colors.border` | CSS color | `--border` |
-| `colors.text` | CSS color | `--text` |
-| `colors.textDim` | CSS color | `--text-dim` |
-| `colors.textFaint` | CSS color | `--text-faint` |
-| `colors.accent` | CSS color | `--cyan` (primary accent) |
-| `colors.accentSecondary` | CSS color | `--pink` |
-| `colors.purple` | CSS color | `--purple` |
-| `colors.green` | CSS color | `--green` |
-| `colors.amber` | CSS color | `--amber` |
-| `colors.red` | CSS color | `--red` |
-| `colors.orange` | CSS color | `--orange` |
-| `colors.blue` | CSS color | `--blue` |
-| `background.image` | path | main window background (tinted by `background.tint`) |
-| `background.tint` | CSS color | overlay on the background image for readability |
-| `sidebar.image` | path | sidebar background |
-| `sidebar.tint` | CSS color | overlay on the sidebar image |
-| `fonts.text` | path (.ttf/.woff2) | replaces the interface font |
-| `fonts.mono` | path (.ttf/.woff2) | replaces the monospace font |
-| `icons.brand` | path (.png/.svg) | replaces the sidebar brand icon |
-
-All asset paths are relative to the theme repository root. Only `id`,
-`name` and `version` are mandatory — anything omitted keeps the built-in
-value.
-
-## Themable component IDs
-
-Structural blocks carry stable IDs so themes or future tooling can target
-them: `#app-shell`, `#sidebar`, `#brand-icon`, `#scan-visual`,
-`#monitor-bar`, `#scan-button`, `#results-button`.
-
-## Registering
-
-Add the repository URL to `web/themes.json` in the
-[rusty-cleaner](https://github.com/leandroruel/rusty-cleaner) repository:
+Only `id`, `name` and `version` are mandatory:
 
 ```json
 {
   "id": "tokyo-afterburn",
   "name": "Tokyo Afterburn",
+  "version": "1.0.0",
   "author": "leandroruel",
   "description": "…",
-  "repo": "https://github.com/leandroruel/rusty-cleaner-theme-tokyo-afterburn"
+  "background": "src/assets/images/background.png",
+  "sidebar": "src/assets/images/sidebar.png",
+  "brand": "src/assets/icons/brand.png",
+  "fonts": []
 }
 ```
 
-Users then see the theme under **Settings → Themes**, click
-**Download & apply** and Rusty Cleaner clones the repository (public git
-repositories only), reads `theme.json` and applies everything.
+- `background` / `sidebar` / `brand` — paths relative to the repo root,
+  resolved to absolute and served through the asset protocol as `<img>`
+  layers behind the UI.
+- `fonts` — array of font file paths; each becomes an `@font-face`.
+- `brand` must be a raster format (`.png`/`.jpg`/`.webp`); SVG is
+  unreliable through the WebView asset protocol.
+
+## theme.css
+
+Everything visual. The only sanitization: `@import`, `expression()` and
+`javascript:` URLs are stripped. Otherwise the CSS is injected as-is.
+
+## Registering
+
+Add the repository URL to `web/themes.json` in
+[rusty-cleaner](https://github.com/leandroruel/rusty-cleaner).
 
 ## License
 
