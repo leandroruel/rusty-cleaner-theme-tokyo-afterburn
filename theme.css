@@ -58,7 +58,8 @@ body {
     0 0 12px color-mix(in srgb, var(--cyan) 25%, transparent);
 }
 
-/* Scan ring — neon tube from the mockup: magenta ↔ electric cyan */
+/* Scan ring — neon tube from the mockup: magenta ↔ electric cyan.
+   No filter here — the glow lives on the static wrapper (.scan-visual::before). */
 .scan-ring {
   background: conic-gradient(
     from 120deg,
@@ -68,9 +69,14 @@ body {
     #2a67bb 78%,
     #e71c64 100%
   );
-  filter:
-    drop-shadow(0 0 8px rgba(58, 208, 255, 0.55))
-    drop-shadow(0 0 16px rgba(231, 28, 100, 0.4));
+  filter: none;
+}
+
+/* Static glow for the ring — split blue/magenta neon */
+.scan-visual::before {
+  box-shadow:
+    0 0 16px rgba(58, 208, 255, 0.45),
+    0 0 32px rgba(231, 28, 100, 0.28);
 }
 
 /* Glass center — the background art shows through */
