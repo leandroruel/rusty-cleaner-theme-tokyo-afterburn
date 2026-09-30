@@ -53,11 +53,12 @@ body {
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(8, 8, 24, 0.94) 0%,
-    rgba(8, 8, 24, 0.82) 28%,
-    rgba(8, 8, 24, 0.35) 52%,
-    rgba(8, 8, 24, 0.08) 72%,
-    rgba(8, 8, 24, 0.18) 100%
+    rgba(8, 8, 24, 0.98) 0%,
+    rgba(8, 8, 24, 0.95) 20%,
+    rgba(8, 8, 24, 0.88) 35%,
+    rgba(8, 8, 24, 0.45) 55%,
+    rgba(8, 8, 24, 0.05) 75%,
+    rgba(8, 8, 24, 0) 100%
   );
 }
 
@@ -224,9 +225,37 @@ body {
   backdrop-filter: blur(8px);
 }
 
-/* Scan panel slightly more transparent than other panels */
+/* Scan panel: same gradient veil as the sidebar — dark at top for text
+   legibility, transparent at bottom so the art shows */
 .panel.scan-panel {
-  background: color-mix(in srgb, var(--panel) 55%, transparent);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(8, 8, 24, 0.98) 0%,
+      rgba(8, 8, 24, 0.95) 20%,
+      rgba(8, 8, 24, 0.88) 35%,
+      rgba(8, 8, 24, 0.45) 55%,
+      rgba(8, 8, 24, 0.05) 75%,
+      rgba(8, 8, 24, 0) 100%
+    );
+}
+
+/* Ring and buttons aligned at the bottom with 20px margin */
+.panel.scan-panel .scan-visual {
+  width: clamp(160px, 26vh, 200px);
+  margin: auto auto 0;
+}
+
+.panel.scan-panel .scan-actions {
+  margin: 12px auto 20px;
+}
+
+/* Fill remaining space above the ring */
+.panel.scan-panel .scan-caption {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .scan-ring-inner strong {
