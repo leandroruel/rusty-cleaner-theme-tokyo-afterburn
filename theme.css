@@ -305,3 +305,65 @@ button:focus-visible, select:focus-visible {
   color: var(--cyan);
   background: color-mix(in srgb, var(--cyan) 8%, transparent);
 }
+
+/* Monitor bar: single HUD strip, not three cards */
+html[data-community-theme] .monitor-bar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 10px;
+  padding: 10px 6px 8px;
+  border: 1px solid color-mix(in srgb, #2a67bb 55%, #e71c64);
+  border-radius: 0;
+  background: rgba(8, 8, 24, 0.42);
+  backdrop-filter: blur(8px);
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+}
+
+html[data-community-theme] .monitor-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 18px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+html[data-community-theme] .monitor-item + .monitor-item {
+  box-shadow: inset 1px 0 0 color-mix(in srgb, #e71c64 35%, transparent);
+}
+
+html[data-community-theme] .monitor-icon {
+  width: 36px;
+  height: 36px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+}
+
+html[data-community-theme] .monitor-item:nth-child(1) { color: #ff2d6a; }
+html[data-community-theme] .monitor-item:nth-child(2) { color: #3ad0ff; }
+html[data-community-theme] .monitor-item:nth-child(3) { color: #4ecfa8; }
+
+html[data-community-theme] .monitor-label {
+  color: color-mix(in srgb, currentColor 70%, #eee6f8);
+  letter-spacing: 0.12em;
+  font: 700 9px var(--font-mono);
+}
+
+html[data-community-theme] .monitor-item strong {
+  color: #eee6f8;
+  font: 700 13px var(--font-mono);
+}
+
+html[data-community-theme] .monitor-track {
+  height: 3px;
+  border-radius: 0;
+  background: rgba(238, 230, 248, 0.08);
+}
+
+html[data-community-theme] .fill-cpu    { background: #ff2d6a; box-shadow: 0 0 8px #ff2d6a; }
+html[data-community-theme] .fill-memory { background: #3ad0ff; box-shadow: 0 0 8px #3ad0ff; }
+html[data-community-theme] .fill-disk   { background: #4ecfa8; box-shadow: 0 0 8px #4ecfa8; }
