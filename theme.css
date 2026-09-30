@@ -143,6 +143,9 @@ body {
   background: transparent;
   color: rgba(238, 230, 248, 0.88);
   box-shadow: none;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 .sidebar .nav-item:hover:not(.is-active):not(:disabled) {
