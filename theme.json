@@ -3,7 +3,9 @@
   "name": "Tokyo Afterburn",
   "version": "1.0.0",
   "author": "leandroruel",
-  "description": "Synthwave neon night over Tokyo — magenta afterburn glow, electric blue gridlines and deep indigo panels.",
+  "description": "Synthwave neon night over Tokyo \u2014 magenta afterburn glow, electric blue gridlines and deep indigo panels.",
   "brand": "src/assets/icons/brand.png",
-  "fonts": []
+  "fonts": [
+    "src/assets/fonts/DHF-Story-Brush-Slanted.woff"
+  ]
 }

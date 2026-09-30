@@ -238,12 +238,20 @@ body {
   color: #6f6790;
 }
 
-/* Title — display italic like the mockup */
+/* Title — brush script font from the theme pack */
+@font-face {
+  font-family: "Story Brush";
+  src: url("{{THEME_ROOT}}/src/assets/fonts/DHF-Story-Brush-Slanted.woff") format("woff");
+}
+
 .scan-heading h1 {
-  font-size: 28px;
-  font-style: italic;
-  letter-spacing: .02em;
-  font-weight: 800;
+  font-family: "Story Brush", var(--font);
+  font-size: 32px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: .01em;
+  line-height: 1.15;
+  text-shadow: 0 0 20px color-mix(in srgb, var(--cyan) 25%, transparent);
 }
 
 /* Eyebrow with neon accent */
