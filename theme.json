@@ -4,8 +4,6 @@
   "version": "1.0.0",
   "author": "leandroruel",
   "description": "Synthwave neon night over Tokyo — magenta afterburn glow, electric blue gridlines and deep indigo panels.",
-  "background": "src/assets/images/background.png",
-  "sidebar": "src/assets/images/sidebar.png",
   "brand": "src/assets/icons/brand.png",
   "fonts": []
 }
