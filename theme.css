@@ -1,4 +1,7 @@
-/* Tokyo Afterburn — the CSS IS the theme */
+/* Tokyo Afterburn — the CSS IS the theme.
+   {{THEME_ROOT}} is replaced by the app with the asset protocol URL
+   pointing to this theme's directory, so any file in the repo is
+   referenceable. */
 
 :root {
   --bg: #080818;
@@ -18,11 +21,30 @@
   --blue: #3a6fd8;
 }
 
+/* Main window background with tint overlay for readability */
+body {
+  background-image:
+    linear-gradient(rgba(8, 8, 24, 0.55), rgba(8, 8, 24, 0.55)),
+    url("{{THEME_ROOT}}/src/assets/images/background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Sidebar background */
+.sidebar {
+  background-image:
+    linear-gradient(rgba(15, 10, 30, 0.60), rgba(15, 10, 30, 0.60)),
+    url("{{THEME_ROOT}}/src/assets/images/sidebar.png");
+  background-size: cover;
+  background-position: center;
+}
+
 /* Panels with a soft neon edge */
 .panel {
   border-radius: 6px;
   border: 1px solid #2a1f4a;
-  box-shadow: 0 0 0 0 transparent, 0 4px 20px rgba(8, 8, 24, 0.4);
+  box-shadow: 0 4px 20px rgba(8, 8, 24, 0.4);
   backdrop-filter: blur(2px);
 }
 
@@ -32,7 +54,8 @@
 }
 
 .sidebar .nav-item.is-active {
-  box-shadow: inset 2px 0 0 var(--cyan), 0 0 12px color-mix(in srgb, var(--cyan) 25%, transparent);
+  box-shadow: inset 2px 0 0 var(--cyan),
+    0 0 12px color-mix(in srgb, var(--cyan) 25%, transparent);
 }
 
 /* Scan ring with afterburn glow */
